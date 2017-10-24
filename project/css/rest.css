@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,ul,h1,h2,h3,h4,h5,h6,p,ol,dl,dt,dd,input,form,select,form,input,textarea{ 
+	margin:0; 
+	padding:0;
+	font-family:"Microsoft YaHei";
+}
+li{ list-style:none}
+a{ text-decoration:none}
+a:hover{ text-decoration:underline}
+img{ border:none; display:block;}
+.clear{zoom:1}
+.clear:after{ content:""; display:block; clear:both;}
+/*多行 超出显示省略*/
+.ellMore{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	
+}
+/*单行 超出显示省略*/
+.ell{
+	 font-size: 18px;
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
