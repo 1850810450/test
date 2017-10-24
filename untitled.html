@@ -1,0 +1,843 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>小米商城</title>
+		<style>
+			*{ margin:0px; padding:0px;}
+			body{ background:#FFF; color:#333; font-size:14px; min-width:1226px; margin:0px; padding:0px; font-family:"微软雅黑"}
+			.box{ background:url(image/cms_15010570123743_yImAg.jpg) no-repeat; height:120px; width:100%;background-position:center 0;}
+			.site_top{ background:#333; height:40px;}
+			.site_main{ width:1226px; margin:0 auto; line-height:38px;}
+			.site_main a:link{ color:#b0b0b0; text-decoration:none; font-size:12px;}
+			.site_main a:hover{ color:#FFF;}
+			.site_main .sep{ color:#424242; margin:5px; }
+			.site_left{ float:left;}
+			.site_right{ float:right; background:#424242; margin-left:20px; text-align:center; padding:0 15px; color:#b0b0b0;line-height: 39px; z-index:2; position:relative;}
+			.iconfont{font-family:"iconfont" !important;font-size:16px;font-style:normal;padding:0 5px;}
+			.site_right:hover{ color:#ff6700; background:#FFF;}
+			.site_right .menu1{ position:absolute; background:#Ffffff; width:300px; height:96px; display:none; z-index:5; right:2px; border:1px solid #CCC; line-height:96px; top:-96px; transition:all 0.5s;}
+			.site_right:hover .menu1{ display:block; top:39px; transition:all 0.5s;}
+			.site_mid{ float:right;}
+			
+			.header{ height:96px; width:1226px; margin:0 auto; position:relative;}
+			.header_logo{float:left;}
+			.header_logo img{ border:0px;}
+			.header_logo .bg1{ width:50px; height:50px; background:#ff6700;float:left; margin-top:20px;}
+			.header .gif{ width:155px; height:55px; background:url(image/yiyuanyingbijiben.gif) no-repeat; float:left; margin-top:15px;}
+			
+			.header_nav{ float:left; }
+			.header_nav ul li{ list-style:none; float:left; padding:0 8px; line-height:96px;}
+			.header_nav ul li a:link{ text-decoration:none; font-size:16px; color:#333;}
+			.header_nav ul li a:hover{ color:#ff6700;}
+			
+			.header_search{ height:92px;}
+			
+			.header_search .search{ position:absolute; right:50px;top:24px;border:0px; width:250px; height:40px; outline:1px solid #ff6700; }
+			.header_search .submit{  position:absolute; right:10px;top:24px;border:0px;  width:40px; height:40px;outline:1px solid #ff6700; background:#FFF;}
+			.header_search .submit .icon{font-family:"iconfont" !important;font-size:28px; font-style:normal;padding:5px; color:#000; line-height:40px;}
+			.header_search .submit .icon:hover{ color:#FFF;transition:all 0.5s;}
+			.header_search .submit:hover{ background:#ff6700; color:#FFF; transition:all 0.5s;}
+			.header_search .word{ position: absolute; right:62px; top:35px; height:30px; font-size:12px;}
+			.header_search .word a:link{ float:left; margin:0 8px;background:#eee;  text-decoration:none; color:#757575; transition:all 1s;}
+			.header_search .word a:hover{ background:#ff6700; color:#FFF; transition:all 2s;}
+			
+			.content_top_down img{ border:0;}
+			.content_top_down ul{ list-style:none;}
+			.content_top_down ul li{ display:none;}
+			.content_top{ width:1226px; height:460px; margin:0 auto; border:#F00; background:#FF0;}
+			.content_top_up{ list-style:none; position:absolute; background: rgba(0,0,0,0.8); filter:alpha( opacity=80); opacity:0.8; padding:20px 0; width:230px; }
+			.content_top_up ul li{ list-style:none;line-height:30px; padding:6px 20px; color:#FFF; }
+			.content_top_up ul li:hover{ background:#ff6700;}
+			.content_top_up ul li .icon{font-family:"iconfont" !important;font-size:14px; font-style:normal; float:right;}
+			.content_top_up ul li:hover .menu2{ display:block;}
+			.content_top_up .menu2{ position:absolute; background:#FFF; left:230px;top:0; width:264px;background:#FFF; display:none; height:460px;}
+
+			.content_top_up .menu2 img{ border:0; width:40px; height:40px; margin-top:10px; float:left;}
+			.content_top_up .menu2 ul li{color:#000; height:60px;}
+			.content_top_up .menu2 ul li:hover{ color:#FF0; background:#FFF;}
+			.content_top_up .menu2 ul li a{ line-height:60px; height:60px; float:left; padding:0 8px;}
+			
+			.content_mid{ width:1226px; height:200px; margin:0 auto; border:#F00; margin-top:16px;}
+			.content_mid_left{width:230px; float:left;}
+			.content_mid ul li{ list-style:none; float:left; padding-left:6px; width:70px; height:67px;background:#665e57; padding-top:18px; text-align:center;}
+			.content_mid ul li a:link{ text-decoration:none; color: #CCC;}
+			.content_mid ul li a:hover{ color:#FFF;}
+			.content_mid .icon{font-family:"iconfont" !important;font-size:24px;font-style:normal;padding:0 5px;}
+			.pic{ float:left;}
+			.pic img{ width:310px; height:170px;padding-left:18px; border:0px;}
+			
+			.content_bottom{ width:1226px; margin:0 auto; margin-bottom:40px;}
+			.content_bottom ul li{ list-style:none; background:#fafafa; width:222px; height:320px;  text-align:center; float:left;text-align:center;margin:0 10px; padding-top:40px;}
+			.content_bottom ul li img{ width:160px; height:160px; border:0px; }
+			.content_bottom h2{ font-size:22px; font-weight:200; line-height:58px; color:#333;}
+			.desc{ color:#b0b0b0; line-height:24px; font-size:12px;}
+			.price{ color:#ff6709; margin-top:20px;}
+			.item1{border-top:1px solid #FC3; }
+			.item2{border-top:1px solid #0F0; }
+			.item3{border-top:1px solid #CF0; }
+			.item4{border-top:1px solid #6F0;}
+			.item5{border-top:1px solid #0F0;}
+			.content_bottom ul li a:link{ text-decoration:none; color:#212121;}
+			
+			.page_main{ background:#f5f5f5; padding-bottom:40px;}
+			.container{ width: 1226px; margin: 0 auto;}
+			.container_top .h2{  font-size:22px; color: #333; float:left;height:50px;padding-top:50px;}
+			.container_top .more{ float: right;height:50px;padding-top:30px;}
+			.container_top .more .red{ color:#F00; border-bottom:2px solid #F00;}
+			.container_top .more a:link{ text-decoration: none; color: #333333; padding: 0 5px; line-height:28px; font-size:16px;}
+			
+			.container_left{ float: left; margin-right:10px;}
+			.container_left img{ width:234px; border:0px; }
+			.container_right{ float:right; width:975px; }
+			.container_right img{ width:150px; height:150px; border:0px; margin-top:30px;}
+			.container_right ul li{ list-style:none; width:226px; height:300px; float:left; background: #FFF; text-align:center; position:relative; margin:5px 7px; overflow:hidden;}
+			
+			.container_right ul li .li_top{ position:absolute; top:0; left:90px; background:#83c44e; padding:0 15px;}
+			.container_right ul li .li_red{ position:absolute; top:0; left:90px; background:#e53935; padding:0 15px;}
+			.none{ background:#ff6709; text-align:left; padding:0 15px; font-size:12px; position:absolute;bottom:-70px; transition:all 0.8s; left:0;}
+			.container_right ul li:hover .none{transition:all 0.8s; bottom:0px;}
+			.container_right ul li:hover{ box-shadow:5px 5px 5px #999999; transition:all 0.5s; }
+			.container_right ul .right_pic{ height:143px; }
+			.right_pic img{width:80px; height:80px; border:1px; float:right;}
+			.right_pic .title{ text-align:left; margin:30px 0 0 24px;}
+			.right_pic .title .aa{ font-size:18px;}
+			.right_pic .price{ text-align:left; margin:10px 0 0 24px;}
+			.right_pic .pp{ position:absolute; top:0px; right:30px;}
+			.right_pic .more{ position:absolute; top:40px; right:30px; }
+			.right_pic .more .icon{font-family:"iconfont" !important;font-size:48px;font-style:normal;padding:0 5px; color:  #ff6709;}
+			.none .text{ color:#FFF; padding-top:5px;}
+			.none .desc{ color:#CCC;}
+			
+			
+			.recommend{ width:1226px; margin:0 auto; padding-bottom:20px; height:360px;}
+			.recommend_title{ margin-top:40px; line-height:58px;}
+			.recommend img{ border:0; display:block; margin:0 auto; margin-bottom:20px; width:140px; height:140px;}
+			.recommend_main ul li{ list-style:none; text-align:center; float:left; width:230px; background:#FFF; margin-right:10px; padding-bottom:20px;}
+			.recommend_main span{ line-height:30px; }
+			.recommend_main ul li:hover{ transition:all 0.5s; margin-bottom:10px; box-shadow:5px 5px 5px #999999;}
+			
+			.vedio{ width:1226px; margin:0 auto; padding-bottom:30x; height:400px;}	
+			.vedio_title{ margin-top:10px;line-height:58px;}
+			.vedio_content img{ display:block; border:0; padding-bottom:20px; width:300px; height:182px;}
+			.vedio_content ul li{ list-style:none; text-align:center;  width:300px; float:left; text-align:center; margin-left:5px; padding-bottom:40px; background:#FFF;}
+			.vedio_content ul li a{ font-size:14px; color:#333; line-height:30px;}
+			.vedio_content ul li a:hover{ color:#ff6700;}
+			.vedio_content ul li span{ font-size:12px; color:#b0b0b0;}
+			.vedio_content ul li:hover{transition:all 0.5s; margin-bottom:10px; box-shadow:5px 5px 5px #999999;}
+			
+			.foot{ width:1226px; margin:0 auto;}
+			.foot_title{ border-bottom:1px solid #CCC; line-height:60px;}
+			.foot_title a{ font-size:16px; line-height:25px; text-align:center; padding:0 70px;}
+			.foot_title a:hover{ color:#ff6700;}
+			
+			.foot_link{ padding-bottom:30px;}
+			.col_links{ float:left; width:160px;}
+			.col_links dt{ line-height:60px; font-size:14px; color:#424242;}
+			.col_links dd{ font-size:12px; color: #333; margin:15px 0;}
+			.col_links dd:hover{ color:#ff6700;}
+			
+			
+			.foot_link .more{ float:left; border-left:1px solid #CCC; text-align:center; padding-left:46px; margin-top:30px;}
+			.foot_link .more .phone{ font-size:22px; color:#ff6700; padding-top:30px;}
+			.foot_link .more .news{ color:#ff6700; border:1px solid #ff6700; padding:5px; margin-top:10px;}
+			.foot_link .more .news:hover{ background:#ff6700; color:#FFF; transition:all 0.5s;}
+			.foot_link .more .time{ font-size:12px;}
+			.foot_link .more .news .icon{font-family:"iconfont" !important;font-size:16px;font-style:normal;padding:0 5px; color:#ff6709;}
+			.foot_link .more .news .icon:hover{ color:#FFF; transition:all 0.5s;}
+			
+			
+			.end{ background:#fafafa; height:172px;}
+			.end_main{ width:1226px; margin:0 auto; padding:30px 0;}
+			.end_main .end_left{background:#ff6700; float:left; width:50px; height:50px; }
+			
+			
+			.end_main .end_mid{ float:left; margin-left:10px;}
+			.end_mid .end_mid_title a:link{ color:#000; text-decoration:none; }
+			.end_mid .end_mid_title a:hove{ color:#ff6700;}
+			.end_main .end_mid p{ color:#b0b0b0; font-size:12px; text-align:left;}
+			
+			.end_main .end_right{ float:right;}
+			.end_main .end_right img{ width:96px; height:32px; padding:0 3px;} 
+			
+			.end_logo{ width:1226px; margin:0 auto; text-align:center;}
+			.end_logo .tt{ color: #CCC; height:20px; font-size:16px;}
+			
+			.clear{ clear:both;} 
+			@font-face {
+  font-family: 'iconfont';
+  src: url('iconfont.eot');
+  src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+  url('iconfont.woff') format('woff'),
+  url('iconfont.ttf') format('truetype'),
+  url('iconfont.svg#iconfont') format('svg');
+}
+		</style>
+    
+
+		<link rel="stylesheet" type="text/css" href="icons/iconfont.css">
+	</head>
+
+	<body>
+		<div class="box">&nbsp;</div>
+		<div class="site_top">
+			<div class="site_main">
+				<div class="site_left">
+					<a href="#">小米商城</a><span class="sep">|</span>
+					<a href="#">MIUI</a> <span class="sep">|</span>
+					<a href="#">游戏</a> <span class="sep">|</span>
+					<a href="#">多看阅读</a> <span class="sep">|</span>
+					<a href="#">云服务</a><span class="sep">|</span>
+					<a href="#">金融</a> <span class="sep">|</span>
+					<a href="#">小米商城移动版</a><span class="sep">|</span>
+					<a href="#">问题反馈</a> <span class="sep">|</span>
+					<a href="#">Select Region</a> </div>
+
+				<div class="site_right"><i class="iconfont">&#xe600;</i>购物车( 0 )
+                <div class="menu1"><p>购物车中还没有商品，赶紧选购吧</p>
+                </div>
+                </div>
+
+				<div class="site_mid">
+					<a href="#">登录</a><span class="sep">|</span>
+					<a href="#">注册</a><span class="sep">|</span>
+					<a href="#">消息通知</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="header">
+			<div class="header_logo">
+				<div class="bg1">
+					<a href="#"><img src="image/mi-logo.png"></a>
+				</div>
+				<div class="gif"></div>
+			</div>
+
+			<div class="header_nav">
+				<ul>
+					<li><a href="#">小米手机</a></li>
+					<li><a href="#">红米</a></li>
+					<li><a href="#">平板</a></li>
+					<li><a href="#">笔记本</a></li>
+					<li><a href="#">电视</a></li>
+					<li><a href="#">盒子</a></li>
+					<li><a href="#">影音</a></li>
+					<li><a href="#">路由器</a></li>
+					<li><a href="#">智能硬件</a></li>
+					<li><a href="#">服务</a></li>
+					<li><a href="#">社区</a></li>
+				</ul>
+			</div>
+
+			<div class="header_search">
+				<input class="search" type="text" placeholder="">
+				 <div class="submit"> <i class="icon">&#xe614;</i></div>
+				<div class="word">
+					<a href="#">电视4A 65</a>
+					<a href="#">小米5s 立减200</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="content_top">
+				<div class="content_top_up">
+					<ul>
+						<li>手机 电话卡<i class="icon">&#xe658;</i> <div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        </ul>
+                        </div></li>
+						<li>笔记本 平板卡<i class="icon">&#xe658;</i> <div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                 
+                        </ul>
+                        </div></li>
+						<li>电视 盒子<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                 
+                        </ul>
+                        </div></li>
+						<li>路由器 智能软件<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                      
+                        </ul>
+                        </div></li>
+						<li>移动电源 电池 插线板<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                 
+                        </ul>
+                        </div></li>
+						<li>耳机 音箱<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                 
+                        </ul>
+                        </div></li>
+						<li>保护套 贴膜<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                       
+                        </ul>
+                        </div></li>
+						<li>线材 支架 储存卡<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                       
+                        </ul>
+                        </div></li>
+						<li>箱包 服饰 鞋 眼镜<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+                        
+                          <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+
+                        </ul>
+                        </div></li>
+						<li>米兔 生活周边<i class="icon">&#xe658;</i><div class="menu2">
+                         <ul>
+                         <li>
+                       <img src="image/xm6_80.png"><a> 线材</a>
+                        </li>
+                        
+                         <li>
+                       <img src="image/xiancai.jpg"><a> 线材</a>
+                        </li>
+
+                        </ul>
+                        </div></li>
+					</ul>
+				</div>
+				<div id="gd" class=" content_top_down">
+                <ul>
+               <li><img src="image/xmad_15023605827425_zEYNa.jpg"></li>
+               <li><img src="image/xmad_15022810332736_bJimc.jpg"></li>
+                <li><img src="image/xmad_15022768455536_CYvNg.jpg"></li>
+                <ul>
+                </div>
+			</div>
+
+			<div class="content_mid">
+				<div class="content_mid_left">
+					<ul>
+						<li><a href="#"><i class="icon">&#xe602;</i><br>选购手机</a></li>
+						<li><a href="#"><i class="icon">&#xe611;</i><br>企业团购</a></li>
+						<li><a href="#"><i class="icon">&#xe603;</i><br>一元活动</a></li>
+						<li><a href="#"><i class="icon">&#xe613;</i><br>米粉卡</a></li>
+						<li><a href="#"><i class="icon">&#xe601;</i><br>以旧换新</a></li>
+						<li><a href="#"><i class="icon">&#xe640;</i><br>话费充值</a></li>
+
+					</ul>
+
+				</div>
+
+				<div class="pic">
+					<a href="#"><img src="image/xmad_14984572731273_CcmqE.jpg"></a>
+					<a href="#"><img src="image/xmad_14977951260311_AlzsH.jpg"></a>
+					<a href="#"> <img src="image/xmad_15015006045059_PEafU.jpg"></a>
+				</div>
+			</div>
+
+			<div class="content_bottom">
+				<h2>小米明星单品</h2>
+				<div class="box_bd">
+					<ul>
+						<li class="item1">
+							<a href="#"><img src="image/pms_1490077525.53218827!220x220.png"></a>
+								<br><br><br>
+                                <a href="#">10000mAh小米移动电源</a>
+								
+									<br>
+									<p class="desc">双向快充，高密度锂聚合物电芯</p>
+									<p class="price">79元</p>
+						</li>
+                        
+                        <li class="item2">
+							<a href="#"><img src="image/pms_1490077525.53218827!220x220.png"></a>
+								<br><br><br>
+                                <a href="#">10000mAh小米移动电源</a>
+								
+									<br>
+									<p class="desc">双向快充，高密度锂聚合物电芯</p>
+									<p class="price">79元</p>
+						</li>
+                        
+                       
+						<li class="item3">
+							<img src="image/6ef55907-bbed-49be-a2bb-be0821b5f7b8.png">
+								<br><br><br><a href="#">小米手环<a>
+							
+									<br>
+									<p class="desc">双向快充，高密度锂聚合物电芯</p>
+									<p class="price">79元</p>
+						</li>
+                        
+                        	<li class="item4">
+							<img src="image/6ef55907-bbed-49be-a2bb-be0821b5f7b8.png">
+								<br><br><br>小米手环
+							
+									<br>
+									<p class="desc">双向快充，高密度锂聚合物电芯</p>
+									<p class="price">79元</p>
+						</li>
+                        
+                        	<li class="item5">
+							<img src="image/6ef55907-bbed-49be-a2bb-be0821b5f7b8.png">
+								<br><br><br>小米手环
+							
+									<br>
+									<p class="desc">双向快充，高密度锂聚合物电芯</p>
+									<p class="price">79元</p>
+						</li>
+
+					   
+				
+					</ul>
+
+				</div>
+                <div class="clear"></div>
+			</div>
+            </div>
+            
+           <div class="page_main">
+           		<div class="container">
+           			<div class="container_top">
+           				<div class="h2">家电</div>
+           				<div class="more">
+           					<a class="red" href="#">热门</a> 
+           					<a href="#">电视影音</a>
+           					<a href="#">电脑</a>
+           					<a href="#">家居</a>
+           				</div>	
+                        <div class="clear"></div>
+           			</div>
+           			
+           			<div class="container_left">
+           				<a href="#"><img src="image/xmad_15012263229741_LcSWd.jpg"></a>
+          
+           			</div>
+                    
+           			<div class="container_right">
+                    	<ul>
+                        	<li><a href="#"><img src="image/pms_1495074053.84174465!220x220.jpg"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p>
+                            <div class="li_top">新品</div>
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li><a href="#"><img  src="image/pms_1490077525.53218827!220x220.png"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p>
+                            <div class="li_red">享9折</div>
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li><a href="#"><img src="image/pms_1499138177.54329452!220x220.jpg"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p>
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li><a href="#"><img src="image/pms_1490604824.19051012!220x220.jpg"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p>
+                          
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li><a href="#"><img src="image/xmad_15012263229741_LcSWd.jpg"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p> 
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li><a href="#"><img src="image/T1hMK_BjEv1RXrhCrK!220x220.jpg"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p>
+                            <div class="li_red=">新品</div>
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li><a href="#"><img src="image/pms_1495440281.97624801!220x220.jpg"></a>
+                            <p class="title">小米电视4 65英寸</p>
+                            <p class="desc">8月1日-3日买就送三年小米电视会员</p>
+                            <p class="price">9999元</p>
+                            <div class="li_top">新品</div>
+                            <div class="none">
+                            <p class="text">很喜欢小米，就是吃起来有点烫，不知道会不会爆炸</p>
+                            <p class="desc">来自于&nbsp;吃货&nbsp;的评价</p>
+                            </div>
+                            </li>
+                            
+                            <li class="right_pic">
+                            <p class="title">小米手环</p>
+                            <p class="price">9999元</p>
+                            <a href="#" class="pp"><img src="image/pms_1467962689.97551741!220x220.jpg"></a>
+                            
+                            </li>
+                            
+                            <li class="right_pic">
+                            <p class="title"><span class="aa">浏览更多</span></p>
+                            <p class="price">热门</p>
+                            <a class="more"><i class="icon">&#xe604;</i></a>
+                           
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+           		</div>
+                
+                
+                <div class="recommend">
+           	
+                	<h2 class="recommend_title">为你推荐</h2>
+ 
+                    <div class="recommend_main">
+                    <ul>
+                    	<li><a><img src="image/pms_1472609961.95298675.jpg"></a>
+                        	<a>米家扫地机器人</a><br>
+                            <span class="price"> 1699元</span><br>
+                        	<span>1.1万人好评</span>
+                        </li>
+                        
+                        <li><a><img src="image/pms_1477389928.07792706.jpg"></a>
+                        	<a>米家扫地机器人</a><br>
+                            <span class="price"> 1699元</span><br>
+                        	<span>1.1万人好评</span>
+                        </li>
+                        
+                        <li><a><img src="image/pms_1475052168.43877575.jpg"></a>
+                        	<a>米家扫地机器人</a><br>
+                            <span class="price"> 1699元</span><br>
+                        	<span>1.1万人好评</span>
+                        </li>
+                        
+                        <li><a><img src="image/pms_1481507050.2285518.jpg"></a>
+                        	<a>米家扫地机器人</a><br>
+                            <span class="price"> 1699元</span><br>
+                        	<span>1.1万人好评</span>
+                        </li>
+                        
+                        <li><a><img src="image/pms_1483942428.16162503!220x220.jpg"></a>
+                        	<a>米家扫地机器人</a><br>
+                            <span class="price"> 1699元</span><br>
+                        	<span>1.1万人好评</span>
+                        </li>
+                        
+                    </ul>
+                   
+                   <div class="clear"></div>
+                    </div>
+					
+            
+             </div>
+            
+            
+            <div class="vedio"> 
+            
+            <div class="vedio_title"><h2>视频</h2></div>
+            
+            <div class="vedio_content">
+            <ul>
+            <li>
+            <img src="image/xmad_1492588199164_Jykpx.jpg">
+               <a>听雷总讲述小米7年工艺探索之路</a><br>
+               <span>小米6，7年工艺探索的巅峰之作</span>
+            </li>
+            
+            <li>
+            <img src="image/xmad_14925882923733_lghaJ.jpg">
+               <a>听雷总讲述小米7年工艺探索之路</a><br>
+               <span>小米6，7年工艺探索的巅峰之作</span>
+            </li>
+            
+            <li>
+            <img src="image/xmad_14954491368955_oHlMm.jpg">
+               <a>听雷总讲述小米7年工艺探索之路</a><br>
+               <span>小米6，7年工艺探索的巅峰之作</span>
+            </li>
+            
+            <li>
+            <img src="image/xmad_14954492313573_fOVNG.jpg">
+               <a>听雷总讲述小米7年工艺探索之路</a><br>
+               <span>小米6，7年工艺探索的巅峰之作</span>
+            </li>
+  
+            </ul>
+            
+            
+            </div>
+            
+            <div class="clear"></div>
+            </div>
+
+		</div>
+
+
+	
+    <div class="foot">
+    <div class="foot_title">
+    <a>预约维修服务</a><span class="sep">|</span>
+     <a>预约维修服务</a><span class="sep">|</span>
+      <a>预约维修服务</a><span class="sep">|</span>
+       <a>预约维修服务</a><span class="sep">|</span>
+        <a>预约维修服务</a>
+    </div>
+    
+    <div class="foot_link">
+    
+    <dl class="col_links">
+    	<dt>帮助中心</dt>
+        <dd>账户管理</dd>
+        <dd>购物指南</dd>
+        <dd>订单操作</dd>
+    </dl>
+    
+     <dl class="col_links">
+    	<dt>帮助中心</dt>
+        <dd>账户管理</dd>
+        <dd>购物指南</dd>
+        <dd>订单操作</dd>
+    </dl>
+    
+     <dl class="col_links">
+    	<dt>帮助中心</dt>
+        <dd>账户管理</dd>
+        <dd>购物指南</dd>
+        <dd>订单操作</dd>
+    </dl>
+    
+     <dl class="col_links">
+    	<dt>帮助中心</dt>
+        <dd>账户管理</dd>
+        <dd>购物指南</dd>
+        <dd>订单操作</dd>
+    </dl>
+    
+     <dl class="col_links">
+    	<dt>帮助中心</dt>
+        <dd>账户管理</dd>
+        <dd>购物指南</dd>
+        <dd>订单操作</dd>
+    </dl>
+    
+     <dl class="col_links">
+    	<dt>帮助中心</dt>
+        <dd>账户管理</dd>
+        <dd>购物指南</dd>
+        <dd>订单操作</dd>
+    </dl>
+ 
+    <div class="more">
+    <span class="phone">400-100-5678</span><br>
+    <span class="time">周一至周日 8:00-18:00<br>
+			（仅收市话费）</span> <br><br>
+     <a class="news"><i class="icon">&#xe60b;</i>24小时在线客服</a>
+    
+    </div>
+    
+    <div class="clear"></div>
+    </div>
+    
+    
+    </div>
+    
+    <div class="end">
+    <div class="end_main">
+    	<div class="end_left"><img src="image/mi-logo.png"></div>
+        <div class="end_mid">
+      			  <div class="end_mid_title">
+                  <a href="#">小米商城</a><span class="sep">|</span>
+					<a href="#">MIUI</a> <span class="sep">|</span>
+					<a href="#">米聊</a> <span class="sep">|</span>
+					<a href="#">多看书城</a> <span class="sep">|</span>
+					<a href="#">小米路由器</a><span class="sep">|</span>
+					<a href="#">视频电话</a> <span class="sep">|</span>
+					<a href="#">小米天猫店|</a><span class="sep">|</span>
+					<a href="#">小米淘宝直营店</a> <span class="sep">|</span>
+                    <a href="#">Select Region</a> 
+                    </div>
+                    <p>©mi.com &nbsp;&nbsp;京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号&nbsp;&nbsp; 京网文[2014]0059-0009号<br> 
+							违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+                    </div>
+        <div class="end_right"><a><img src="image/truste.png"></a>
+        						<a><img src="image/v-logo-2.png"></a>
+                                <a><img src="image/v-logo-1.png"></a>
+                                <a><img src="image/v-logo-3.png"></a>
+                                </div>
+                                <div class="clear"></div>
+    </div>
+    <div class="end_logo">
+    <span class="tt">探索黑科技，小米为发烧而生！</span>
+    
+    
+    </div>
+    
+    </div>
+    
+    
+    
+
+	</div>
+    
+     <script>
+		 var List=document.getElementById("gd").getElementsByTagName("li");
+		 var i=0
+		 List[i].style.display="block"
+		 function play(){
+			 var e=i
+			 i<List.length-1?i++:i=0
+			 List[e].style.display="none"
+			  List[i].style.display="block"
+			  			  
+			 }
+		  
+				var time=setInterval(play,3000)
+        </script>
+	</body>
+
+</html>
