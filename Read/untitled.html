@@ -1,0 +1,897 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0px; padding:0px;}
+.box{ position:relative; border-bottom:1px solid #dcdcdc; min-width:1200px; margin:0px; padding:0px; cursor:pointer; font-family:"微软雅黑"；}
+.box a:link{ color:#333;}
+.box a:hover{ color:#F00;}
+.nav{ width:980px; margin:0px auto;}
+.box .nav_bg{background:#fafafa; height:40px;}
+
+.nav_left{position:relative; float:left;}
+.nav_left ul li{float:left; list-style:none; font-size:12px; line-height:40px; padding:0 10px; color:#888888; }
+.nav_left ul li:hover{ color:#C03;}
+.ma{position:absolute; z-index:2; left:300px;top:36px; display:none;}
+.ma img{ width:75px;}
+.block:hover .ma{ display:block;}
+
+.nav_right{float:right;position:relative;}
+.nav_right a:link{ text-decoration:none; font-size:12px; float:right; line-height:40px; padding:0 10px;color:#888888;}
+.nav_right a:hover{ color:#C03;}
+
+.menu1{ border:1px solid #CCC;position:absolute; top:40px; left:-30px; display:none; width:100px;}
+.menu1 ul li{list-style:none; font-size:12px; color:# 666; line-height:30px; border-bottom:1px solid #CCC;background:#FFF; text-align:center;}
+.menu1 ul li:hover{ color:#F00;}
+.enter{ float:right; position:relative; width:50px; z-index:1;}
+.enter:hover .menu1{ display:block;}
+
+.header{ width:980px;margin:0px auto;padding:30px 0;}
+.header_logo{ background:url(img/header.png) no-repeat; width:200px; height:36px; float:left; margin:60px o;}
+input{ border:1px; outline:1px solid #F00; width:300px; height:33px;}
+.input{ float:left; margin-left:80px; margin-top:4px;}
+.input_bg{ background:url(img/header.png) no-repeat 0px -53px; float:left; width:50px;height:50px;}
+.header_right{ float:right;}
+.header_right .span1,.header_right .span2{ float:right; border:1px solid #ECECEC; padding-left:20px;line-height:40px; padding-right:10px;}
+.header_right .span1_logo{ background:url(img/header.png) no-repeat 0 -180px; width:20px; height:20px; float:left; margin-top:10px;}
+.header_right .span2_logo{ background:url(img/header.png) no-repeat 0 -126px; width:20px; height:20px; float:left; margin-top:10px;}
+.header_right .span1:hover,.header_right .span2:hover{ background:#ebe6e1;}
+
+.header_bottom{ min-width:980px;}
+.crt{ width:980px; margin:20px auto; height:42px; border-bottom:2px solid #CCC; }
+.crt ul li{ float:left;list-style:none; padding:0 20px; font-size:16px; color:#665656; font-weight:bold; line-height:42px; position:relative;}
+.crt ul li:hover{ border-bottom:2px solid #F00; }
+.crt_bot{ border-bottom:2px solid #F00;}
+.png1{ margin-left:30px;}
+b{ position: absolute; top:3px; left:2px;}
+
+.box2{ min-width:980px;}
+.box3{ width:980px; margin:0 auto;}
+.banner_left{ border:1px solid #F4F4F4; width:240px; float:left;}
+.banner_box{ position:relative; border:1px solid #F4F4F4; padding-bottom:9px;}
+.banner_box p{text-align:center;font-size:12px; line-height:25px; }
+.banner_box a:link{ text-decoration:none;padding:0 10px; color: #666;}
+.banner_box a:hover{ color:#F00;}
+h3{ padding-top:9px; padding-left:24px;}
+i{ width:18px; height:18px; background: url(img/sprite.png) no-repeat 0 -170px; float:right; margin-top:3px;}
+.red{ color:#F00;}
+.banner_block{ position:absolute; z-index:2;width:240px; border:1px solid #F4F4F4; left:240px;top:0px; height:95px; display:none; background:#FFF;}
+.banner_block a:link{ text-decoration:none; float:left; font-size:12px; line-height:25px;}
+.banner_box:hover .banner_block{ display:block;}
+.banner_box:hover i{ display:none;}
+.banner_right{ float:right;}
+
+.content{ min-width:980px;}
+.content1{ width:980px;margin:0 auto; margin-top:20px;}
+.content1_left{float:left; outline:1px solid #F4F4F4;}
+.content_text{ font-size:12px; float:left; color:#888; line-height:20px; padding-right:22px; padding-left:5px;}
+.content_pic{ float:left; padding:20px;}
+.content_pic img{ height:160; width:114px;}
+.content1 a:link{ line-height:60px;  text-decoration:none; padding-left:20px;}
+.content1 a:hover{ color:#F00;}
+
+.content_text .imp a:link{ color:#000; text-decoration:none; font-size:16px; line-height:50px; margin-left:-20px;}
+.content_text .imp a:hover{ color:#F00;}
+
+.content_text .zs{ padding-top:10px;margin-left:-20px;}
+.content_text .zs a:link{color:#000; text-decoration:none; font-size:12px;margin-bottom:10px; }
+.content_text .zs a:hover{color: #F00;}
+.content1_left:hover{ background:#F4F4F4;}
+
+.content2{ width:980px; margin:0 auto;}
+.content2_text{ font-size:12px; float:left; color:#888; line-height:20px; padding-right:25px; padding-left:5px;}
+.content2_text .imp a:link{color:#000; text-decoration:none; font-size:16px; line-height:50px; margin-left:-20px;}
+.content2_text .zs{ padding-top:10px;margin-left:-20px;}
+.content2_text .zs a:link{color:#000; text-decoration:none; font-size:12px;margin-bottom:10px;}
+.content_text .zs a:hover{color: #F00;}
+.content1_left:hover{background:#F4F4F4;}
+
+.content_right{ float:right; margin-top:-460px;}
+.right_bt{ margin-bottom:26px; font-size:18px;}
+.menu2{ float:right; border:1px solid #F4F4F4; width:230px;}
+.menu2 ul li{ list-style:none; border:1px solid #F4F4F4; position:relative; line-height:42px;color:#666; z-index:1;}
+.menu2 i{ float:left; margin:8px 6px 5px 10px; line-height:30px;}
+.menu2 span{ float:left; font-size:16px; padding:8px 5px;}
+.menu2 p{ float:left; font-size:12px; padding-left:5px;}
+.menu2 ul li .li_none{ display:none;position: absolute;top:0px; left:0;z-index:2; background:#FFF; width:230px; height:150px;}
+.menu2 ul li .li_none img{width:74px; height:104px; margin-left:10px; margin-top:10px; float:left; padding-bottom:20px;}
+.menu2 ul li.bl div{ display:block; border-right:1px solid #F4F4F4;}
+.menu2 ul li.bl div:hover{ background:#F4F4F4;}
+.content_right a{ height:40px; line-height:40px; padding-left:40px;}
+
+a:link{ text-decoration:none;}
+a:hover{ color:#F00;}
+
+.content3{ width:980px; margin:0 auto; padding-top:20px; }
+.content3_left{ float:left; width:735px; border:1px solid #F4F4F4;}
+.content3_right{float:right; margin-top:410px;}
+.content3_left img{ width:114px; height:160px;}
+.content3 p{ line-height:3px; font-size:18px; margin-bottom:30px;margin-top:30px;}
+.menu3 li{ padding:15px 15px; list-style:none; float:left;}
+.menu3 li a{ font-size:16px; font-weight:bold;}
+.menu3 .text2{ font-size:12px;}
+.menu3 li:hover{ background:#F4F4F4;}
+
+.content4{ width:980px; margin:0 auto;}
+.content .a1{ font-size:18px; font-weight:normal; float:left; margin-top:20px; }
+.content4 img{ width:285px; height:180px;}
+.content4 p{ line-height:28px; font-size:12px; color:#666;}
+.content4_con{ margin-top:20px; float:left; font-size:12px; padding:30px; border:1px solid #F4F4F4; }
+.content4_con span{ font-size:16px; font-weight:bold;}
+.content4_con:hover{ background:#F4F4F4;}
+.content4 dl{ border-bottom:1px solid #CCC; font-size:14px; line-height:28px; }
+.content4 i{ width:10px; height:20px; background:url(img/sprite.png) no-repeat -38px -5px; float:left; font-style:normal;}
+.content4_dl{ float:left; font-size:12px; padding:20px; border:1px solid #F4F4F4; margin-top:20px;}
+.menu4 dl:hover{ background:#F4F4F4;}
+
+.content5{ width:980px; margin:0 auto;}
+.content5 span{ float:left; font-size:18px; line-height:32px; margin:30px 0 20px 0;}
+.cont5_text{ border:1px solid #F4F4F4; height:250px; float:left; width:231px;}
+.cont5_text .text{ float:left; margin:30px 0 0 10px;}
+.cont5_text .c1{ font-size:16px; font-weight:bold; color:#4C4C4C;}
+.cont5_text .c2{ font-size:12px;}
+.cont5_text .c3{ font-size:12px; color:#888;}
+.cont5_text .c4{font-size:14px; border:1px solid #F00; border-radius:10px; text-align:center; line-height:25px; margin-top:40px; color:#F00;}
+.cont5_text .icon{ width:38px; height:36px; background: url(img/index.png) no-repeat 1px -24px; margin-top:40px; margin-left:20px;float:left;}
+.cont5_text:hover{ background:#F4F4F4;}
+h4{ float:left; line-height:60px; font-size:18px; font-weight:normal; color:#000;}
+h6{ float:right;}
+
+.box4{ background:#F4F4F4; margin-top:40px; border-bottom:1px solid #CCC;}
+.foot{ width:980px; margin:0 auto;}
+.text3{ padding:30px 10px; float:left; width:138px;}
+.text3 span{ font-size:16px; font-weight:normal; }
+.foot a:link{ font-size:12px; line-height:25px; color:#555;}
+.foot a:hover{ color:#F00;}
+
+.box5{ background:#F4F4F4;}
+.footer{ width:980px; margin:0 auto; text-align:center; padding-top:30px; font-size:12px; line-height:30px; padding-bottom:40px; position:relative;}
+.footer a:link{ font-size:12px; padding:0 2px; color:#666;}
+.footer a:hover{ color:#F00;}
+
+.pic1{ position:fixed;bottom:10px; float:left;}
+.pic1 img{ width:110px;}
+.pic3{position:fixed;right:240px; bottom:30px; z-index:33px; text-align:center; }
+.d1 p{ font-size:14px;}
+.d1{ display:none; position:absolute; left:80px; top:-10px;width:200px; padding:30px ;z-index:2;}
+.d1 a{ border:1px solid #F00; border-radius:20px; height:50px; background:#F00;}
+.d1 a:hover{ color:#FFF;}
+.pic3:hover .d1{display:block; background:#FFF;}
+
+.bg1{ width:50px; height:50px; background:url(img/06.png) no-repeat 0px -200px; position:fixed; bottom:80px;right:160px;}
+.bg1:hover{background:url(img/06.png) no-repeat 0px -250px; }
+
+.bg2{ width:50px; height:50px; background:url(img/06.png) no-repeat 0px -0px; position:fixed; bottom:20px;right:160px;}
+.bg2:hover{background:url(img/06.png) no-repeat 0px -50px; }
+
+
+.bg3{ width:150px; height:200px; background:url(img/06.png) no-repeat -55px -360px; position:fixed; bottom:20px;right:0px;}
+.bg3:hover{background:url(img/06.png) no-repeat -55px -562px; }
+
+.t1{ float:left; margin-left:420px; }
+.tt1{ float:left; line-height:20px;px;}
+.icon1{ width:22px; height:20px; background:url(img/index.png) no-repeat -25px -130px; float:left; margin:0 2px;}
+.icon1:hover{background:url(img/index.png) no-repeat -25px -150px;}
+
+.icon2{ width:22px; height:20px; background:url(img/index.png) no-repeat 0px -130px;float:left; margin:0 2px;}
+.icon2:hover{background:url(img/index.png) no-repeat 0px -150px;}
+
+.icon3{ width:22px; height:20px; background:url(img/index.png) no-repeat -50px -130px;float:left; margin:0 2px;}
+.icon3:hover{background:url(img/index.png) no-repeat -50px -150px;}
+
+.title{width:100%; position:fixed; top:-46px; left:0px; transition:all 0.5s; background:#fafafa;height:46px; z-index:11; border:1px solid #CCC;}
+.box6{ width:980px; margin:0 auto;}
+
+.title .title_left{ background: url(img/header.png) no-repeat 0 -344px; height:46px; float:left;}
+.title .title_left ul{ font-size:14px; color:#665656; line-height:46px; list-style:none; margin-left:158px;}
+.title .title_left ul li{ float:left; padding:0 8px;}
+.title .title_left ul li:hover{ color:#F00; cursor:pointer;}
+.red{ color: #F00;}
+
+.title .title_right{ float:right;}
+.title .title_right input{ width:200px; margin-top:8px; height:30px; float:left; margin-left:64px;}
+.title .title_right .search{ float:right; width:50px; height:50px; background:url(img/header.png) no-repeat 0 -391px;}
+
+.clear{clear:both;}
+</style>
+</head>
+
+<body>
+<div class="box">
+<div class="nav_bg">
+<div class="nav">
+<a name="top"></a>
+<div class="nav_left">
+<ul>
+  <li>网易云阅读</li>
+  <li>国风中文网</li>
+  <li>采薇书院</li>
+  <li>从电脑上导入书籍</li>
+  <li class="block">公众号<div class="ma"><img src="img/ma.png"></div></li>
+</ul>
+<div class="clear"></div>
+</div>
+
+  <div class="nav_right">
+    <a href="#">举报</a>
+    <a href="#">注册</a>
+   <div class="enter"> 
+   <a href="#">登录</a>
+     <div class="menu1">
+    <ul>
+      <li>网易邮箱登录</li>
+      <li>新浪微博登录</li>
+      <li>腾讯微博登录</li>
+      <li>手机号登录</li>
+      <li>微信登录</li>
+    </ul>
+
+    </div>
+    </div>
+  </div>
+  
+  <div class="clear"></div>
+  
+</div>
+</div>
+<div class="header">
+<div class="header_logo"></div>
+
+<div class="input"><input type="text" placeholder="啦啦啦德玛西亚"></div>
+<div class="input_bg">&nbsp;</div>
+
+<div class="header_right">
+					<span class="span1"><div class="span1_logo"></div>我的书架</span>
+					<span class="span2"><div class="span2_logo"></div>我的订阅</span>
+                        </div>
+<div class="clear"></div>
+</div>
+
+<div class="header_bottom">
+<div class="crt">
+<ul>
+  <li class="crt_bot">首页</li>
+  <li>出版图书</li>
+  <li>国风中文网</li>
+  <li>采薇书院</li>
+  <li>漫画</li>
+  <li>订阅</li>
+  <li>排行榜</li>
+  <li class="png1"><b><img src="img/bi.png"></b>作者中心</li>
+  <li class="png2"><b><img src="img/qian.png"></b>充值</li>
+  <li class="png3"><b><img src="img/phone.png"></b>客户端</li>
+  
+</ul>
+</div>
+</div>
+
+<div class="box2">
+<div class="box3">
+<div class="banner_left">
+
+  <div class="banner_box">
+  		<h3>国风中文网<i></i></h3>
+  		<p><a href="#"><span class="red">都市生活</span></a>
+        <a href="#">官场职场</a>
+        <a href="#">玄幻仙侠</a></p>
+       <p> <a href="#">悬疑探险</a>
+        <a href="#">灵异恐怖</a>
+        <a href="#"><span class="red">短篇小说</span></a></p>
+ 		<div class=" banner_block"> 
+        <h3>&nbsp;&nbsp;</h3>
+         <a href="#">科幻奇幻</a>
+          <a href="#">军事谍战</a>
+           <a href="#">同人网游</a>
+            <a href="#">历史传奇</a>
+		</div>
+  </div>
+  
+   <div class="banner_box">
+  		<h3>采薇书院<i></i></h3>
+  		<p><a href="#"><span class="red">都市生活</span></a>
+        <a href="#">官场职场</a>
+        <a href="#">玄幻仙侠</a></p>
+       <p> <a href="#">悬疑探险</a>
+        <a href="#">灵异恐怖</a>
+        <a href="#">短篇小说</a></p>
+ 		<div class=" banner_block"> 
+        <h3>&nbsp;&nbsp;</h3>
+         <a href="#">科幻奇幻</a>
+          <a href="#">军事谍战</a>
+           <a href="#">同人网游</a>
+            <a href="#">历史传奇</a>
+		</div>
+  </div>
+  
+   <div class="banner_box">
+  		<h3>图书<i></i></h3>
+  		<p><a href="#"><span class="red">都市生活</span></a>
+        <a href="#">官场职场</a>
+        <a href="#">玄幻仙侠</a></p>
+       <p> <a href="#">悬疑探险</a>
+        <a href="#"><span class="red">灵异恐怖</span></a>
+        <a href="#">短篇小说</a></p>
+ 		<div class=" banner_block"> 
+        <h3>&nbsp;&nbsp;</h3>
+         <a href="#">科幻奇幻</a>
+          <a href="#">军事谍战</a>
+           <a href="#">同人网游</a>
+            <a href="#">历史传奇</a>
+		</div>
+  </div>
+  
+   <div class="banner_box">
+  		<h3>订阅<i></i></h3>
+  		<p><a href="#"><span class="red">都市生活</span></a>
+        <a href="#">官场职场</a>
+        <a href="#"><span class="red">玄幻仙侠</span></a></p>
+       <p> <a href="#">悬疑探险</a>
+        <a href="#">灵异恐怖</a>
+        <a href="#">短篇小说</a></p>
+ 		<div class=" banner_block"> 
+        <h3>&nbsp;&nbsp;</h3>
+         <a href="#">科幻奇幻</a>
+          <a href="#">军事谍战</a>
+           <a href="#">同人网游</a>
+            <a href="#">历史传奇</a>
+		</div>
+  </div>
+<div class="clear"></div>
+</div>
+
+<div class="banner_right"><img src="img/201707211136511235a.jpg"></div>
+<div class="clear"></div>
+</div>
+
+<div class="content">
+<div class="content1">
+ <h4>主编推荐</h4>
+ <a href="#"><span class="red">小说</span></a>
+ <a href="#">图书</a>
+ <a href="#"> 订阅</a>
+ <div class="clear"></div>
+ <div class="content1_left">
+ <div class="content_pic"><img src="img/8796093023472815286.jpg"></div>
+ <div class="content_text">
+ <div class="imp"><a href="#">罪恶调查局</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃<br>等死的老记者，这就是罪恶<br>调查局的全部。
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+ 
+        </div>
+        
+         <div class="content1_left">
+ <div class="content_pic"><img src="img/8796093023312517165.jpg"></div>
+ <div class="content_text">
+ <div class="imp"><a href="#">天才妖妃</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃<br>等死的老记者，这就是罪恶<br>调查局的全部。
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+ 
+        </div>
+        
+        
+         <div class="content1_left">
+ <div class="content_pic"><img src="img/8796093023459184195.jpg"></div>
+ <div class="content_text">
+ <div class="imp"><a href="#">幻夜</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃<br>等死的老记者，这就是罪恶<br>调查局的全部。
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+ 
+        </div>
+         
+</div>
+
+
+ <div class="content2"> 
+ 
+ 
+ <div class="content2_left">
+ <h4>国风中文网</h4>
+ <div class="clear"></div>
+ <div class="content1">
+ 
+ <div class="content1_left">
+ <div class="content_pic"><img src="img/8796093023069541329.jpg"></div>
+ <div class="content2_text">
+ <div class="imp"><a href="#">大地产商</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃等死的<br>老记者，这就是罪恶调查局的全部<br>放散阀单身狗
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+        </div>
+        
+        <div class="content1_left">
+        <div class="content_pic"><img src="img/8796093023298325481.jpg"></div>
+ <div class="content2_text">
+ <div class="imp"><a href="#">非常侦探</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃等死的<br>老记者，这就是罪恶调查局的全部<br>放散阀单身狗
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+        </div>
+        
+        <div class="clear"></div>
+        <div class="content1_left">
+        <div class="content_pic"><img src="img/8796093022970062680.jpg"></div>
+ <div class="content2_text">
+ <div class="imp"><a href="#">风流青云路</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃等死的<br>老记者，这就是罪恶调查局的全部<br>放散阀单身狗
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+        </div>
+        
+        <div class="content1_left">
+        <div class="content_pic"><img src="img/8796093022995057684.jpg"></div>
+ <div class="content2_text">
+ <div class="imp"><a href="#">奇门弄宝</a></div>
+		骁骑校<br>
+		毛头小子，混血少女，混吃等死的<br>老记者，这就是罪恶调查局的全部<br>放散阀单身狗
+        <div class="zs"><a href="#"> 阅读全部</a></div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="content_right">
+        <div class="right_bt"> 国风中文网畅销榜</div>
+        <div class="menu2">
+        <ul id="List">
+          <li>
+         01&nbsp;&nbsp;青云志
+          <div class="li_none">
+           <i class="red">01</i>
+           <img src="img/01.jpg">
+           <span>超级特卫传奇</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+          <li>02&nbsp;&nbsp;青云志
+           <div class="li_none">
+           <i class="red">02</i>
+           <img src="img/02.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+          <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+        </ul>
+     <a href="#"> 查看更多</a>
+        </div>
+        </div>
+ </div>
+ 
+ 
+  <div class="content3">
+  <p>精品图书</p>
+  <div class="content3_left">
+  <ul class="menu3">
+    <li><img src="img/7916814672988757901.jpg"><br>
+       <a href="#">无人生还</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+     <li><img src="img/7916485919011927304.jpg"><br>
+       <a href="#">我们都一样</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+     <li><img src="img/8796093022355650287.jpg"><br>
+       <a href="#">恰到好处</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+     <li><img src="img/39582426569026.jpg"><br>
+     <a href="#">希区柯克</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+     <li><img src="img/8796093023461174627.jpg" ><br>
+       <a href="#">毛姆作品</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+    <li><img src="img/8796093023069541329.jpg" ><br>
+       <a href="#">大地产商</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+    <li><img src="img/8796093022951055842.jpg" ><br>
+       <a href="#">好吗，好的</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+      
+    <li><img src="img/6597118145168982617.jpg" ><br>
+       <a href="#">鬼吹灯</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+      
+    <li><img src="img/8796093023474667678.jpg" ><br>
+       <a href="#">万物生长</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+    
+      
+    <li><img src="img/20160922141805a0b38.jpg" ><br>
+       <a href="#">无人生还</a><br>
+       <span class="text2">【英】阿加莎•克里斯</span>
+    </li>
+  
+  </ul>
+  </div>
+  
+	<div class="content3_right">
+    
+      <div class="content_right">
+        <div class="right_bt"> 图书畅销榜</div>
+        <div class="menu2">
+        <ul id="Menu">
+          <li>
+         01&nbsp;&nbsp;青云志
+          <div class="li_none">
+           <i class="red">01</i>
+           <img src="img/01.jpg">
+           <span>超级特卫传奇</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+          <li>02&nbsp;&nbsp;青云志
+           <div class="li_none">
+           <i class="red">02</i>
+           <img src="img/02.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+          <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+          
+                    
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+              <li>03&nbsp;&nbsp;医武兵王 <div class="li_none">
+           <i class="red">03</i>
+           <img src="img/03.jpg">
+           <span>青云志</span><br>
+           <p>我自对天笑</p>
+           </div>
+          </li>
+        </ul>
+     <a href="#"> 查看更多</a>
+        </div>
+        </div>
+ </div>
+  
+ <div class="clear"></div>
+
+<div class="content4">
+<span class="a1">热门文章</span>
+<div class="clear"></div>
+<div class="content4_con">
+<div><img src="img/20170719140254de968.jpg"><br>
+		<span>张悦然：旧时的离别</span>
+
+		<P>来源：美文日赏<br>
+
+  那座老火车站适时地死去，变成记忆中的文物。</P>
+</div>
+</div>
+
+<div class="content4_con">
+<div><img src="img/20170719135247cb350.jpg"><br>
+		<span>听爷爷的话</span>
+
+		<P>来源：人间<br>
+
+  他还是一样喜欢絮叨，一个人能自顾自地说上半天。</P>
+</div>
+</div>
+
+<div class="content4_dl">
+<div class="menu4">
+	<dl>
+    	<dt><i></i><a href="#">自白</a></dt>
+        <dd>我愿意把这人生的短梦做得生意盎然。</dd>
+    </dl>
+    <dl>
+    	<dt><i></i><a href="#">自白</a></dt>
+        <dd>我愿意把这人生的短梦做得生意盎然。</dd>
+    </dl>
+    <dl>
+    	<dt><i></i><a href="#">自白</a></dt>
+        <dd>我愿意把这人生的短梦做得生意盎然。</dd>
+    </dl>
+    <dl>
+    	<dt><i></i><a href="#">自白</a></dt>
+        <dd>我愿意把这人生的短梦做得生意盎然。</dd>
+    </dl>
+    <dl>
+    	<dt><i></i><a href="#">自白</a></dt>
+        <dd>我愿意把这人生的短梦做得生意盎然。</dd>
+    </dl>
+
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+<div class="content5"> 
+<span>关于云阅读</span>
+<div class="clear"></div>
+<div class="cont5_text">
+<div class="icon"></div>
+<div class="text">
+<div class="c1">网易云阅读</div><br>
+<div class="c2">最受欢迎的阅读产品</div><br>
+<div class="c3">关注我们</div>
+<div class="c4">+关注</div>
+</div>
+</div>
+
+<div class="cont5_text">
+<div class="icon"></div>
+<div class="text">
+<div class="c1">作者中心</div><br>
+<div class="c2">原创、自媒体、内容商</div><br>
+<div class="c3">招募作者，福利优厚</div>
+<div class="c4">投稿</div>
+</div>
+</div>
+
+
+<div class="cont5_text">
+<div class="icon"></div>
+<div class="text">
+<div class="c1">客服中心</div><br>
+<div class="c2">欢迎反馈宝贵意见给我们</div><br>
+<div class="c3">邮件：reader@188.com<br>
+</div>
+<div class="c4">意见反馈</div>
+</div>
+</div>
+
+
+<div class="cont5_text">
+<div class="icon"></div>
+<div class="text">
+<div class="c1">商务合作</div><br>
+<div class="c2">欢迎来电洽谈相关合作</div><br>
+<div class="c3">关注我们</div>
+<div class="c4">+关注</div>
+</div>
+</div>
+
+<div class="clear"></div>
+
+</div>
+
+</div>
+
+<div class="box4">
+<div class="foot">
+	<div class="text3">
+	<span>出版图书</span><br>
+    <a href="#">小说作品</a> <a href="#">人文社科</a> <br>
+    <a href="#">成功励志</a> <a href="#">经济管理</a><br>
+    <a href="#">品质生活</a> <a href="#">计算机</a> <br>
+    <a href="#">文学作品</a> <a href="#">更多</a> <br>
+	</div>
+    
+    <div class="text3">
+	<span>国风中文网</span><br>
+    <a href="#">都市生活</a> <a href="#">官场职场</a> <br>
+    <a href="#">成功励志</a> <a href="#">经济管理</a><br>
+    <a href="#">品质生活</a> <a href="#">计算机</a> <br>
+    <a href="#">文学作品</a> <a href="#">更多</a> <br>
+	</div>
+    
+    <div class="text3">
+	<span>采薇书院</span><br>
+    <a href="#">小说作品</a> <a href="#">人文社科</a> <br>
+    <a href="#">成功励志</a> <a href="#">经济管理</a><br>
+    <a href="#">品质生活</a> <a href="#">计算机</a> <br>
+    <a href="#">文学作品</a> <a href="#">更多</a> <br>
+	</div>
+    
+    <div class="text3">
+	<span>漫画</span><br>
+    <a href="#">小说作品</a> <a href="#">人文社科</a> <br>
+    <a href="#">成功励志</a> <a href="#">经济管理</a><br>
+    <a href="#">品质生活</a> <a href="#">计算机</a> <br>
+    <a href="#">文学作品</a> <a href="#">更多</a> <br>
+	</div>
+    
+    <div class="text3">
+	<span>杂志</span><br>
+    <a href="#">小说作品</a> <a href="#">人文社科</a> <br>
+    <a href="#">成功励志</a> <a href="#">经济管理</a><br>
+    <a href="#">品质生活</a> <a href="#">计算机</a> <br>
+    <a href="#">文学作品</a> <a href="#">更多</a> <br>
+	</div>
+    
+    <div class="text3">
+	<span>订阅</span><br>
+    <a href="#">小说作品</a> <a href="#">人文社科</a> <br>
+    <a href="#">成功励志</a> <a href="#">经济管理</a><br>
+    <a href="#">品质生活</a> <a href="#">计算机</a> <br>
+    <a href="#">文学作品</a> <a href="#">更多</a> <br>
+	</div>
+</div>
+<div class="clear"></div>
+</div>
+
+
+<div class="box5">
+<div class="footer">
+<a href="#">网易首页</a>  <a href="#"> 公司简介</a>  <a href="#">客户服务</a>
+<a href="#">相关法律</a>  <a href="#"> 网站导航</a>  <a href="#">意见反馈</a>
+<a href="#">客服电话</a>  <a href="#">帮助中心</a>  <a href="#">作者中心</a><br>
+<p>网易公司版权所有©1997-2017</p>
+
+<div class="t1">
+<div class="tt1">分享到：</div>
+<div class=" icon1"></div>
+<div class=" icon2"></div>
+<div class=" icon3"></div>
+</div>
+</div>
+<div  class="clear"></div>
+</div>
+
+</div>
+
+<div class="pic1"><img src="img/05.jpg"></div>
+<div class="pic3"><img src="img/lw.png">
+<div class="d1">
+<p>送 <span class="red">500</span>阅点，请你免费看书</p><br>
+  <a href#>立即领取</a>
+  </div>
+</div>
+<div class="bg1"></div>
+<a href="#top"><div class="bg2"></div></a>
+<div class="bg3"></div>
+
+</div>
+</div>
+
+<div class="title" id="two">
+<div class="box6">
+<div class="title_left">
+<ul>
+<li class="red">首页</li>  <li>出版图书</li>  <li>国风中文网</li>  <li>采薇书院</li>  <li>漫画</li>  <li>订阅</li>  <li>排行榜</li>  <li>客户端下载</li> 
+</ul>
+</div>
+
+<div class="title_right">
+<input type="text" placeholder="心理罪之画像">
+<div class="search"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+  var a=document.getElementById("List").getElementsByTagName("li")
+  var b=document.getElementById("Menu").getElementsByTagName("li")
+  var i=0
+  var e=0
+  a[i].className="bl"
+  a[i].style.height="146px"
+  
+  b[e].className="bl"
+  b[e].style.height="146px"
+  
+  var ace=function(){
+		  var i=0
+		   while(i<a.length){
+			   a[i].className=""
+			   a[i].style.height="42px"
+			   i++
+			   }
+			    this.className="bl"
+				this.style.height="146px"
+		  }
+     while(i<a.length){
+	  	a[i].onmousemove=ace
+		i++
+	  }
+	  
+	  while(e<b.length){
+	  	b[e].onmousemove=function(){
+		  var e=0
+		   while(e<b.length){
+			   b[e].className=""
+			   b[e].style.height="42px"
+			   e++
+			   }
+			    this.className="bl"
+				this.style.height="146px"
+		  }
+		e++
+	  }
+	  
+		window.onscroll=function(){
+			var top=document.documentElement.scrollTop || document.body.onscrollTop;
+			  if(top>160){
+				  document.getElementById("two").style.top="0";
+				  
+				  }else{
+					  document.getElementById("two").style.top="-60px"
+					  
+					  }
+			}
+</script>
+
+</body>
+</html>
